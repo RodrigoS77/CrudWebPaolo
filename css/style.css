@@ -1,0 +1,31 @@
+.add-button{
+    position: fixed; /*EL BOTON QUEDA FLOTANTE ENCIMA DEL CONTENIDO*/
+
+    bottom: 30px; /*DESDE ABAJO*/
+    right: 40px; /*DESDE LA DERECHA*/
+
+    background-color: darkgreen; /*COLOR DEL BOTON*/
+    color: white; /*COLOR DEL ICONO*/
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0 , 0, 0.5); /*SOMBRA DEL BOTON*/
+
+    display: flex; /*ACTIVACION DE FLEXBOX*/
+    justify-content: center; /*ALINIANDO A LO HORIZONTAL*/
+    align-items: center;/*ALINIANDO A LO VERTICAL*/
+
+    z-index: 1001; /*PARA QUE EL BOTON QUEDE ENCIMA DE TODO*/
+    transition: transform 0.4s; /*DURACION DE LA ANIMACION*/
+}
+
+.add-button:hover{
+    transform: scale(1.2);
+}
+.tabla-scroll{
+    overflow-x: auto; /*SCROLL HORIZONTAL*/
+}
+button{
+    margin: 1px;
+}
