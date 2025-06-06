@@ -45,7 +45,7 @@ ObtenerIntegrantes();
 //PROCESO PARA AGREGAR INTEGRANTE
 
 const modal = document.getElementById("mdAgregar");
-const btnAgregar = document.getElementById("btnAgregar"); //BOTON PARA AGREGARS
+const btnAgregar = document.getElementById("btnAgregar"); //BOTON PARA AGREGAR
 const btnCerrar = document.getElementById("btnCerrar")
 
 btnAgregar.addEventListener("click",()=>{
@@ -67,8 +67,28 @@ document.getElementById("frmAgregar").addEventListener("submit", async e => {
     const correo = document.getElementById("txtEmail").value.trim();
 
     //VALIDACION BASICA
-    if(!Nombre || !Apellido || !Correo){
+    if(!nombre || !apellido || !correo){
         alert("Ingrese los valores correctamente")
         return;
+    }
+
+    const respuesta = await fetch(API_URL, {
+        method: "POST",
+        headers: {'Content-Type':'application/json'},  //TIPO DE DATO ENVIADO
+        body: JSON.stringify({nombre,apellido,correo}) //DATOS ENVIADOS
+    });
+
+    //VERIFICAR SI LA API RESPONDE QUE LOS DATOS FUERON CREADOS CORRECTAMENTE
+    if(respuesta.ok){
+        alert("El registro fue agregado correctamente")
+
+        //LIMPIAR EL FORMULARIO
+        document.getElementById("frmAgregar").reset();
+
+        //CERRAR EL MODAL
+        modal.close();
+
+        //RECARGAR LA TABLA
+        ObtenerIntegrantes();
     }
 });
