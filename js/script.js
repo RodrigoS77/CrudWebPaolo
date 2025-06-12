@@ -31,7 +31,7 @@ function MostrarDatos(datos){
                 <td>${integrante.apellido}</td>
                 <td>${integrante.correo}</td>
                 <td>
-                    <button>Editar</button>
+                    <button onclick ="AbrirModalEditar('${integrante.id}', '${integrante.nombre}', '${integrante.apellido}', '${integrante.correo}')">Editar</button>
                     <button onclick="EliminarPersona(${integrante.id})">Eliminar</button>
                 </td>
             </tr>
@@ -107,4 +107,27 @@ async function EliminarPersona(id){
         //RECARGAR TABLA
         ObtenerIntegrantes();
     }
+}
+
+
+/*Proceso para editar un registro */
+const modalEditar = document.getElementById("mdEditar");
+const btnCerrarEditar = document.getElementById("btnCerrarEditar")
+
+btnCerrarEditar.addEventListener("click", ()=>{
+    modalEditar.close();
+});
+
+
+function AbrirModalEditar(id,nombre,apellido,correo){
+    //SE AGREGAN LOS VALORES DEL REGISTRO EN LOS INPUT
+    document.getElementById("txtIdEditar").value = id;
+    document.getElementById("txtEditarNombre").value = nombre;
+    document.getElementById("txtEditarApellido").value = apellido;
+    document.getElementById("txtEditarEmail").value = correo;
+
+    modalEditar.showModal();
+
+
+    ObtenerIntegrantes();
 }
